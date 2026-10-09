@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Thomas Perucho</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a30;--panel2:#182440;--text:#edf2ff;--muted:#b8c3dc;--blue:#67d5ff;--purple:#a78bfa;--line:#2b3858}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:radial-gradient(circle at 85% 5%,#20244d 0,transparent 30%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{width:min(1100px,92%);margin:auto}
+header.site{position:sticky;top:0;background:rgba(11,16,32,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);z-index:5}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:.5px}.brand span{color:var(--blue)}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--muted);font-size:.95rem}
+.hero{padding:60px 0 54px;display:grid;grid-template-columns:1.4fr .8fr;gap:32px;align-items:center}
+.eyebrow{color:var(--blue);font-weight:bold;text-transform:uppercase;letter-spacing:2px;font-size:.8rem}
+h1{font-size:clamp(2.4rem,6vw,4.7rem);line-height:1.05;margin:12px 0}h1 span{color:var(--blue)}
+h2{font-size:clamp(1.7rem,4vw,2.3rem);margin:0 0 18px}h3{margin:0 0 8px}
+.lead{color:var(--muted);font-size:1.12rem;max-width:650px}
+.motto{font-size:1.15rem;font-weight:bold;color:var(--purple);margin:20px 0}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;border:1px solid var(--blue);border-radius:12px;padding:11px 17px;color:var(--text);font:inherit;font-weight:bold;background:transparent;cursor:pointer}
+.btn:hover{text-decoration:none;background:#67d5ff22}
+.btn.primary{background:var(--blue);color:#07111e}.btn.primary:hover{background:#8fe0ff}
+.profile-card,.card{background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 14px 40px #0002}
+.avatar{width:90px;height:90px;border-radius:24px;background:linear-gradient(135deg,var(--blue),var(--purple));display:grid;place-items:center;color:#091225;font-size:2rem;font-weight:900;margin-bottom:18px}
+.profile-card p,.muted{color:var(--muted)}
+section{padding:42px 0}
+.section-intro{color:var(--muted);margin-top:-8px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid.two{grid-template-columns:repeat(2,1fr)}
+.tag{display:inline-block;background:#253452;border:1px solid #354668;border-radius:99px;padding:5px 10px;margin:4px 4px 0 0;color:#dce8ff;font-size:.85rem}
+.timeline{border-left:2px solid var(--blue);padding-left:22px;margin-left:7px}
+.timeline article{position:relative;margin:0 0 25px}
+.timeline article:before{content:"";position:absolute;left:-30px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px #67d5ff20}
+.date{color:var(--blue);font-size:.9rem;font-weight:bold}
+.cv-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.contact-list{display:grid;gap:8px;color:var(--muted)}
+.note{font-size:.88rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);text-align:center}
+
+/* ============ CV & LETTRE (feuille) ============ */
+.sheet{
+  --paper:#121a30;--ink:#edf2ff;--ink2:#b8c3dc;--acc:#67d5ff;--rule:#2b3858;
+  --side:linear-gradient(180deg,#182440,#1d2c58);--side-ink:#f3f6ff;--side-acc:#67d5ff;
+  background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  box-shadow:0 14px 40px #0003;line-height:1.5;
+}
+.sheet h3,.sheet p,.sheet ul{margin:0}
+.sheet .sub{color:var(--ink2)}
+
+/* CV */
+.cv-sheet{display:grid;grid-template-columns:290px 1fr}
+.cv-side{background:var(--side);color:var(--side-ink);padding:30px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.cv-side .avatar{margin:0 auto 4px;width:96px;height:96px;font-size:2.1rem}
+.cv-side h3{font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--side-acc);margin:0 0 8px;padding-bottom:5px;border-bottom:1px solid #ffffff2e}
+.cv-side p,.cv-side li{font-size:.92rem;color:var(--side-ink)}
+.cv-side ul{list-style:none;padding:0}
+.cv-side li{padding:2px 0}
+.cv-side li:before{content:"▸ ";color:var(--side-acc)}
+.cv-side .c{word-break:break-word}
+.cv-main{padding:30px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.cv-name{font-size:2.3rem;line-height:1.05;font-weight:900;margin:0}
+.cv-name span{color:var(--acc)}
+.cv-role{color:var(--purple);font-weight:bold;margin-top:6px!important;font-size:1.02rem}
+.cv-main h3{font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--acc);margin:0 0 8px;padding-bottom:5px;border-bottom:2px solid var(--rule)}
+.cv-main p{font-size:.95rem}
+.item{margin-bottom:10px}.item:last-child{margin-bottom:0}
+.item .t{font-weight:bold}
+.item .d{color:var(--acc);font-size:.82rem;font-weight:bold}
+
+/* Lettre */
+.letter-sheet{display:flex;flex-direction:column}
+.l-band{background:linear-gradient(120deg,#182440,#2b2f6b);color:#fff;padding:28px 40px;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.l-band .n{font-size:2rem;font-weight:900;line-height:1.1}.l-band .n span{color:var(--blue)}
+.l-band .r{color:#cfd9f2;font-size:.92rem;margin-top:4px}
+.l-band .ct{text-align:right;font-size:.92rem;color:#e6edff}
+.l-body{padding:30px 40px 34px;border-top:4px solid var(--acc);flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.l-meta{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.l-dest{font-size:.95rem}.l-dest strong{color:var(--acc)}
+.l-date{text-align:right;font-size:.95rem;color:var(--ink2)}
+.l-obj{font-weight:bold;border-left:4px solid var(--purple);padding-left:12px}
+.l-body p{font-size:.97rem;text-align:justify}
+.l-sign{font-weight:bold;font-size:1.05rem}
+
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr;padding-top:36px}
+  .grid,.grid.two{grid-template-columns:1fr}
+  nav{align-items:flex-start}nav ul{gap:10px}
+  .cv-sheet{grid-template-columns:1fr}
+  .cv-main,.cv-side{padding:24px 20px}
+  .l-band,.l-body{padding-left:20px;padding-right:20px}
+  .l-band .ct{text-align:left}
+}
+
+/* ============ IMPRESSION ============ */
+@media print{
+  @page{size:A4 portrait;margin:0}
+  html,body{background:#fff!important;margin:0!important;padding:0!important;color:#0f172a}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  header.site,footer,.no-print,.print-hide{display:none!important}
+  main.wrap{width:210mm!important;max-width:none!important;margin:0!important;padding:0!important}
+  main>section{padding:0!important;margin:0!important}
+  /* par défaut (Ctrl+P) : le CV */
+  main>section:not(#cv){display:none!important}
+  body[data-print-section="lettre"] main>section{display:none!important}
+  body[data-print-section="lettre"] main>section#lettre{display:block!important}
+
+  .sheet{
+    --paper:#fff;--ink:#0f172a;--ink2:#475569;--acc:#0369a1;--rule:#cbd5e1;
+    --side:linear-gradient(180deg,#0b1020,#1c2b5a);
+    width:210mm;height:296mm;border:0;border-radius:0;box-shadow:none;overflow:hidden;
+    break-inside:avoid;page-break-inside:avoid;page-break-after:avoid;
+  }
+  .sheet .sub{color:#475569}
+
+  .cv-sheet{grid-template-columns:70mm 1fr}
+  .cv-side{padding:12mm 7mm;gap:5mm}
+  .cv-side .avatar{width:26mm;height:26mm;font-size:24pt;border-radius:6mm}
+  .cv-side h3{font-size:8.5pt}
+  .cv-side p,.cv-side li{font-size:9.5pt}
+  .cv-main{padding:13mm 11mm;gap:5mm}
+  .cv-name{font-size:30pt}
+  .cv-role{color:#6d28d9;font-size:11.5pt}
+  .cv-main h3{font-size:9pt}
+  .cv-main p{font-size:10pt}
+  .item{margin-bottom:3.5mm}
+  .item .d{font-size:8.5pt}
+
+  .letter-sheet{display:flex}
+  .l-band{padding:12mm 18mm}
+  .l-band .n{font-size:24pt}
+  .l-body{padding:12mm 18mm 14mm;gap:4mm}
+  .l-body p{font-size:10.5pt;line-height:1.5}
+  .l-meta,.l-date,.l-dest{font-size:10pt}
+  .l-sign{font-size:11.5pt}
+  a{color:inherit!important;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><nav><div class="brand">THOMAS<span>.</span>PORTFOLIO</div><ul><li><a href="#profil">Profil</a></li><li><a href="#competences">Compétences</a></li><li><a href="#parcours">Parcours</a></li><li><a href="#cv">Mon CV</a></li><li><a href="#lettre">Lettre</a></li><li><a href="#contact">Contact</a></li></ul></nav></div></header>
+<main class="wrap">
+<section class="hero" id="profil">
+<div><div class="eyebrow">Portfolio étudiant · Informatique</div><h1>Thomas <span>Perucho</span></h1><p class="lead">Étudiant en BTS Services Informatiques aux Organisations, option SLAM (Solutions Logicielles et Applications Métiers). Je m’intéresse à la création, au montage et à la réparation d’ordinateurs, ainsi qu’au développement informatique.</p><p class="motto">« Apprendre, développer, réussir »</p><div class="actions"><a class="btn primary" href="#cv">Découvrir mon CV</a><a class="btn" href="#contact">Me contacter</a><button class="btn" onclick="printSection('cv')">Imprimer / enregistrer en PDF</button></div></div>
+<aside class="profile-card"><div class="avatar">TP</div><h2 style="margin-bottom:5px">Étudiant en BTS SIO</h2><p>Option SLAM · Lycée Saint Marc</p><hr style="border-color:var(--line)"><p><strong>Centres d’intérêt</strong><br>Jeux vidéo · Musique · Sport · Automobile</p><p><strong>Objectif</strong><br>Développer mes compétences informatiques et acquérir de l’expérience professionnelle.</p></aside>
+</section>
+<section id="competences"><h2>Mes compétences</h2><p class="section-intro">Des connaissances techniques et des compétences acquises au cours de mon parcours.</p><div class="grid">
+<div class="card"><h3>💻 Informatique</h3><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Montage de PC</span><span class="tag">Démontage de PC</span><span class="tag">Réparation</span></div>
+<div class="card"><h3>🤝 Savoir-être</h3><span class="tag">Autonomie</span><span class="tag">Travail en équipe</span><span class="tag">Sens des responsabilités</span><span class="tag">Discipline</span></div>
+<div class="card"><h3>🌍 Langues</h3><p class="muted">Anglais : niveau indiqué dans le CV</p><p class="muted">Espagnol : niveau à préciser</p><p class="note">Les niveaux de langue ne sont pas détaillés dans le CV PDF retrouvé.</p></div>
+</div></section>
+<section id="parcours"><h2>Mon parcours</h2><div class="card"><div class="timeline">
+<article><div class="date">2026 – 2028</div><h3>BTS SIO — option SLAM</h3><p class="muted">Lycée Saint Marc</p><p>Formation orientée vers les solutions logicielles et les applications métiers.</p></article>
+<article><div class="date">2025 – 2026</div><h3>Baccalauréat STMG</h3><p class="muted">Lycée Léonard de Vinci</p></article>
+</div></div></section>
+<section id="experiences"><h2>Mes expériences</h2><div class="grid two">
+<div class="card"><div class="date">2021 · Stage</div><h3>Gendarmerie de Bourgoin-Jallieu</h3><p class="muted">Découverte du milieu professionnel. Le CV mentionne notamment la discipline et une compétence de tir parmi les acquis du stage.</p></div>
+<div class="card"><h3>Stage — École primaire Les Marronniers</h3><p class="muted">Expérience autour de l’encadrement d’un groupe, du sens des responsabilités et du respect des consignes.</p></div>
+</div></section>
+<section id="projets"><h2>Projets et intérêts</h2><div class="grid two">
+<div class="card"><h3>Création et réparation de PC</h3><p class="muted">Mon intérêt pour l’informatique se traduit notamment par le montage, le démontage et la réparation d’ordinateurs.</p></div>
+<div class="card"><h3>Développement informatique</h3><p class="muted">Dans le cadre de mon BTS SIO option SLAM, je souhaite progresser en programmation et dans la conception d’applications.</p></div>
+</div></section>
+
+<section id="cv">
+<div class="cv-head print-hide"><div><h2>Mon CV</h2><p class="section-intro">Retrouvez ici les principales informations de mon CV.</p></div><button class="btn primary" onclick="printSection('cv')">Imprimer / enregistrer en PDF</button></div>
+<article class="sheet cv-sheet">
+  <aside class="cv-side">
+    <div><div class="avatar">TP</div></div>
+    <div><h3>Contact</h3>
+      <p class="c">✉ thomas9.perucho@gmail.com</p>
+      <p class="c">📞 06 10 40 63 39</p>
+      <p class="c">📍 France</p></div>
+    <div><h3>Compétences</h3>
+      <ul><li>SQL et Python</li><li>Montage et démontage de PC</li><li>Réparation informatique</li><li>Présentation</li></ul></div>
+    <div><h3>Savoir-être</h3>
+      <ul><li>Autonomie</li><li>Travail en équipe</li><li>Sens des responsabilités</li><li>Discipline</li></ul></div>
+    <div><h3>Langues</h3>
+      <ul><li>Anglais</li></ul></div>
+    <div><h3>Loisirs</h3>
+      <ul><li>Musique</li><li>Jeux vidéo</li><li>Sport</li><li>Automobile</li></ul></div>
+  </aside>
+  <div class="cv-main">
+    <div><div class="cv-name">Thomas <span>Perucho</span></div>
+      <p class="cv-role">Étudiant en BTS SIO · option SLAM</p></div>
+    <div><h3>Profil</h3>
+      <p class="sub">J’aime la création de PC et la réparation. Je souhaite développer mes compétences et acquérir de l’expérience dans le domaine informatique, en m’investissant dans des projets concrets autour du développement et des applications métiers.</p></div>
+    <div><h3>Formation</h3>
+      <div class="item"><div class="d">2026 – 2028</div><div class="t">BTS SIO — option SLAM</div><p class="sub">Lycée Saint Marc · Solutions logicielles et applications métiers</p></div>
+      <div class="item"><div class="d">2025 – 2026</div><div class="t">Baccalauréat STMG</div><p class="sub">Lycée Léonard de Vinci</p></div></div>
+    <div><h3>Expériences</h3>
+      <div class="item"><div class="d">2021</div><div class="t">Stage en gendarmerie</div><p class="sub">Gendarmerie de Bourgoin-Jallieu · découverte du milieu professionnel, discipline.</p></div>
+      <div class="item"><div class="d">Stage</div><div class="t">Stage en école primaire</div><p class="sub">École primaire Les Marronniers · encadrement d’un groupe, sens des responsabilités, respect des consignes.</p></div></div>
+    <div><h3>Centres d’intérêt informatiques</h3>
+      <div class="item"><div class="t">Création et réparation de PC</div><p class="sub">Montage, démontage et réparation d’ordinateurs.</p></div>
+      <div class="item"><div class="t">Développement informatique</div><p class="sub">Programmation et conception d’applications dans le cadre du BTS SIO option SLAM.</p></div></div>
+  </div>
+</article>
+</section>
+
+<section id="lettre">
+<div class="cv-head print-hide"><div><h2>Ma lettre de motivation</h2><p class="section-intro">Une version imprimable séparément du CV.</p></div><button class="btn primary" onclick="printSection('lettre')">Imprimer la lettre / enregistrer en PDF</button></div>
+<article class="sheet letter-sheet">
+  <div class="l-band">
+    <div><div class="n">Thomas <span>Perucho</span></div><div class="r">Étudiant en BTS SIO · option SLAM</div></div>
+    <div class="ct">thomas9.perucho@gmail.com<br>06 10 40 63 39</div>
+  </div>
+  <div class="l-body">
+    <div class="l-meta">
+      <div class="l-dest"><strong>Pge Informatique</strong><br>564 rue de la République<br>38290 La Verpillière</div>
+      <div class="l-date">Saint-Quentin-Fallavier, le 20 octobre 2026</div>
+    </div>
+    <p class="l-obj">Objet : Candidature pour un stage</p>
+    <p>Madame, Monsieur,</p>
+    <p>Actuellement étudiant en BTS Services Informatiques aux Organisations (SIO), option Solutions Logicielles et Applications Métiers (SLAM) au Lycée Saint Marc, je me permets de vous adresser ma candidature pour un stage au sein de votre entreprise. Votre structure m'intéresse particulièrement pour son domaine d'activité et ses projets, et je souhaite aujourd'hui mettre mes compétences à votre service.</p>
+    <p>Au cours de ma formation, je développe des connaissances en programmation, en analyse et conception d'applications, ainsi qu'en gestion de bases de données. J'ai également effectué des stages qui m'ont permis de découvrir le monde professionnel, de renforcer ma rigueur, mon sens des responsabilités et ma capacité d'adaptation. Je suis curieux, organisé et à l'écoute, avec un bon esprit d'équipe. J'ai parfois tendance à vouloir approfondir un sujet plus que nécessaire ; je travaille donc à mieux gérer mon temps et mes priorités.</p>
+    <p>Je suis convaincu que ma motivation, mon sérieux et mes compétences techniques me permettront de contribuer aux missions qui me seront confiées. Je saurai m'investir dans vos projets tout en continuant à développer mes connaissances. Je reste à votre disposition pour un entretien qui me permettrait de vous présenter plus en détail ma motivation et mon profil.</p>
+    <p>Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
+    <p class="l-sign">Thomas Perucho</p>
+  </div>
+</article>
+</section>
+
+<section id="contact"><h2>Contact</h2><div class="card"><p>Pour échanger au sujet de mon parcours ou d’une opportunité de stage, vous pouvez me contacter par e-mail.</p><div class="contact-list"><div>✉ <a href="mailto:thomas9.perucho@gmail.com">thomas9.perucho@gmail.com</a></div><div>☎ <a href="tel:+33610406339">06 10 40 63 39</a></div></div></div></section>
+</main><footer><div class="wrap">Portfolio de Thomas Perucho · BTS SIO option SLAM</div></footer>
+<script>
+function printSection(sectionId){
+  document.body.dataset.printSection = sectionId;
+  window.print();
+}
+window.addEventListener('afterprint', function(){ delete document.body.dataset.printSection; });
+</script>
+</body></html>
